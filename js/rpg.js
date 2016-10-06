@@ -6,7 +6,10 @@ function Character(type) {
     this.gold = 1;
     this.type = type;
 
-    //making random events based on how much gold or health they give or make
+ } 
+
+function events(){
+	 //making random events based on how much gold or health they give or make
 	var badEvents = [{situation: "clawed by bear", healthAmount: -5,
 	goldAmount: 0}{situation: "Tripped on a pebble", healthAmount: -1, goldAmount:
 	0}{situation: "You are dehydrated", healthAmount: -1, goldAmount:
@@ -21,25 +24,8 @@ function Character(type) {
 
 //math.random
 
-// this.badEventsTotal = function(){
-// 	var total = 0;
-// 	badEvents.forEach(function(badEvent)
-// 		if(badEvent.situation === "clawed by bear"){
-// 			total += badEvent.healthAmount && total += badEvent.goldAmount;
-// 		}
-// 		else{
-// 			total -= badEvent.healthAmount && total += badEvent.goldAmount;
-// 		}
-// 	});
-// 	return total;
-// };
-// //getFull?
-// Character.prototype.getFull = function(){
-// 	return this.health + " " + this.gold + " " this.type;
-// };
-// Character.prototype.getProfile = function(){
-// 	return this.getFull() + ", bad events total: " + this.badEventsTotal();
-// };
+}
+
 
 //This is attaching methods to our class
 Character.prototype.getHealth = function () {
