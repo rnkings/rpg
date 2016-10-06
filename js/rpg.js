@@ -6,34 +6,40 @@ function Character(type) {
     this.gold = 1;
     this.type = type;
 
-    //making random events based on how much gold or health they give or make you lose
-	var badEvents = [{situation: "clawed by bear", healthAmount: 2, goldAmount: 5}];
+    //making random events based on how much gold or health they give or make
+	var badEvents = [{situation: "clawed by bear", healthAmount: -5,
+	goldAmount: 0}{situation: "Tripped on a pebble", healthAmount: -1, goldAmount:
+	0}{situation: "You are dehydrated", healthAmount: -1, goldAmount:
+	0}{situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:
+	-2}];
 
-	this.badEventsConsequences = function(consequences){
-		if(consequences.hasOwnProperty("situation") && consequences.hasOwnProperty("healthAmount" && consequences.hasOwnProperty("goldAmount")))
-			badEvents.push(consequences);
-	}
+	var goodEvents = [{situation: "Found dear hide you can trade in town", healthAmount: 0,
+	goldAmount: 5}{situation: "You found some clean water", healthAmount: 2, goldAmount:
+	0}{situation: "You found shelter before a storm", healthAmount: 1, goldAmount:
+	0}{situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:
+	5}];
 
-}
-this.badEventsTotal = function(){
-	var total = 0;
-	badEvents.forEach(function(badEvent)
-		if(badEvent.situation === "clawed by bear"){
-			total += badEvent.healthAmount && total += badEvent.goldAmount;
-		}
-		else{
-			total -= badEvent.healthAmount && total += badEvent.goldAmount;
-		}
-	});
-	return total;
-};
-//getFull?
-Character.prototype.getFull = function(){
-	return this.health + " " + this.gold + " " this.type;
-};
-Character.prototype.getProfile = function(){
-	return this.getFull() + ", bad events total: " + this.badEventsTotal();
-};
+//math.random
+
+// this.badEventsTotal = function(){
+// 	var total = 0;
+// 	badEvents.forEach(function(badEvent)
+// 		if(badEvent.situation === "clawed by bear"){
+// 			total += badEvent.healthAmount && total += badEvent.goldAmount;
+// 		}
+// 		else{
+// 			total -= badEvent.healthAmount && total += badEvent.goldAmount;
+// 		}
+// 	});
+// 	return total;
+// };
+// //getFull?
+// Character.prototype.getFull = function(){
+// 	return this.health + " " + this.gold + " " this.type;
+// };
+// Character.prototype.getProfile = function(){
+// 	return this.getFull() + ", bad events total: " + this.badEventsTotal();
+// };
 
 //This is attaching methods to our class
 Character.prototype.getHealth = function () {
