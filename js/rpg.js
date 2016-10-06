@@ -11,13 +11,13 @@ function Character(type) {
 	goldAmount: 0}{situation: "Tripped on a pebble", healthAmount: -1, goldAmount:
 	0}{situation: "You are dehydrated", healthAmount: -1, goldAmount:
 	0}{situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:
-	-2}];
+	-2}{situation: "Robbed by a gang of thieves", healthAmount:0 goldAmount:-5}{situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}];
 
 	var goodEvents = [{situation: "Found dear hide you can trade in town", healthAmount: 0,
 	goldAmount: 5}{situation: "You found some clean water", healthAmount: 2, goldAmount:
 	0}{situation: "You found shelter before a storm", healthAmount: 1, goldAmount:
 	0}{situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:
-	5}];
+	5}{situation: "You encounter a traveling healer, who offers to examine you and heal any wounds or illnesses you may have", healthAmount: 5, goldAmount: 0}];
 
 //math.random
 
