@@ -1,7 +1,7 @@
 "use strict";
 
 
-function character(health, gold, name){};
+function character(name){};
 
 character.prototype.health = 100;
 
@@ -17,32 +17,25 @@ character.prototype.getGold = function(){
 	return this.gold;
 }
 
-character.prototype.getName = function(){
-	return this.name;
+character.prototype.chooseCharacter = function(){
 }
 
 //inheritance 
-function questor(){
-	this.health = 100;
-}
+// function questor(){
+// 	this.health = 100;
+// }
 
+// function getBattleNun (){
+// 	character();
+// 	var battleNun = new character(100, 0, "Battle Nun");
+// }
 
-var battleNun = new character(100, 0, "Battle Nun");
+// var assassinPriest = new character(100, 0, "Assassin Priest");
 
-var assassinPriest = new character(100, 0, "Assassin Priest");
+// var warriorMonk = new character(100, 0, "Warrior Monk");
 
-var warriorMonk = new character(100, 0, "Warrior Monk");
-
-
-
-
-
-
-
-
-
-        while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-            lookingFor=prompt("Choose your character (1) Battle Nun, (2) Assassin Priest, or (3) Warrior Monk. (Please type a number between 1-3)");
+while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
+    lookingFor=prompt("Choose your character (1) Battle Nun, (2) Assassin Priest, or (3) Warrior Monk. (Please type a number between 1-3)");
             //filter? can we use a for loop here with a filter?
         }
         
