@@ -1,43 +1,62 @@
 "use strict";
 
 
-function character(name){};
-
-character.prototype.health = 100;
-
-character.prototype.gold = 0;
-
-character.prototype.name = name;
-
-character.prototype.getHealth = function(){
-	return this.health;
+]function Character(type) {
+    this.health = 100;
+    this.gold = 1;
+    this.type = type;
 }
 
-character.prototype.getGold = function(){
-	return this.gold;
+//This is attaching methods to our class
+Character.prototype.getHealth = function () {
+    return this.health;
 }
 
-character.prototype.chooseCharacter = function(){
+Character.prototype.getGold = function () {
+    return this.gold;
 }
 
-//inheritance 
-// function questor(){
-// 	this.health = 100;
-// }
+Character.prototype.getType = function () {
+    return this.type;
+}
 
-// function getBattleNun (){
-// 	character();
-// 	var battleNun = new character(100, 0, "Battle Nun");
-// }
+function BattleNun() {
+    //We call the Character constructor
+    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
+    Character.call(this, 'battle nun');
+}
 
-// var assassinPriest = new character(100, 0, "Assassin Priest");
+//This "inherits" from our Character class, so BattleNun derives from it
+BattleNun.prototype = Object.create(Character.prototype);
+//We should set the constructor on here to our constructor
+BattleNun.prototype.constructor = BattleNun;
 
-// var warriorMonk = new character(100, 0, "Warrior Monk");
 
-while(!(lookingFor == "1" || lookingFor == "2" || lookingFor == "3" || lookingFor == "4")){
-    lookingFor=prompt("Choose your character (1) Battle Nun, (2) Assassin Priest, or (3) Warrior Monk. (Please type a number between 1-3)");
-            //filter? can we use a for loop here with a filter?
-        }
+function WarriorMonk() {
+    //We call the Character constructor
+    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
+    Character.call(this, 'warrior monk');
+}
+
+//This "inherits" from our Character class, so WarriorMonk derives from it
+WarriorMonk.prototype = Object.create(Character.prototype);
+//We should set the constructor on here to our constructor
+WarriorMonk.prototype.constructor = WarriorMonk;
+
+function chooseCharacter(type) {
+    var player;
+
+    if (type === 'battle nun') {
+        player = new BattleNun();
+    } else if (type === 'warrior monk') {
+        player = new WarriorMonk();
+    }
+
+    console.log(player.getHealth());
+    console.log(player.getGold());
+    console.log(player.getType());
+    return player;
+}
         
         switch(lookingFor){
             
