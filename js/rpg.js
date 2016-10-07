@@ -164,7 +164,7 @@ function avoidGuards(){
 //     }
 // });
 
-function gangOfThieves1(){
+function newPage(){
     document.getElementById("gameArea").innerHTML = "<div>You are being attacked by gang of thieves! To Fight back select 1.  To pay them off press 2</div";
 
 }
