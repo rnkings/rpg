@@ -148,21 +148,27 @@ function avoidGuards(){
 
 }
 
-var text;
-document.querySelector('button.button-class').addEventListener('click', function (e) {
-    e.preventDefault();
-    var element = document.querySelector('p.event');
-    switch (element.innerHTML) {
-        case 'Attack Guards': attackGuards();
-             'Avoid Guards': avoidGuards();
-             text = "You meet Guards at the gate that taunt you.  Will you attack or give them your lunch money";
-            //handle this onClick
-        break;
-        case 
-            //handle this onClick
-        break;
-    }
-});
+// var text;
+// document.querySelector('button.button-class').addEventListener('click', function (e) {
+//     e.preventDefault();
+//     var element = document.querySelector('p.event');
+//     switch (element.innerHTML) {
+//         case 'Attack Guards': attackGuards();
+//              'Avoid Guards': avoidGuards();
+//              text = "You meet Guards at the gate that taunt you.  Will you attack or give them your lunch money";
+//             //handle this onClick
+//         break;
+//         case 
+//             //handle this onClick
+//         break;
+//     }
+// });
+
+function newPage(){
+    document.getElementById("gameArea").innerHTML = "<div>blabla</div";
+
+}
+
 
 
 
