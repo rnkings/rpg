@@ -132,20 +132,31 @@ function displayEvent(event) {
     text+= "Health effect: " + event.healthAmount + "<br>";
     eventElement.innerHTML = text;
 }
-        
-        switch(lookingFor){
-            
-            case "1":
-            break;
-            
-            case "2": 
-            break;
-            
-            case "3":
-            break;
-        }
 
-    }else{
-        alert("Choose a valid character.");
-        return;
+function updateTotalStats(player, totalGold, totalHealth){
+
+}
+
+//how to print just text and not a decision, is it a function since they need to
+//click a button to get to next function option
+
+function attackGuards(){
+
+}
+
+function avoidGuards(){
+
+}
+
+document.querySelector('button.button-class').addEventListener('click', function (e) {
+    e.preventDefault();
+    var element = document.querySelector('p.event');
+    switch (element.innerHTML) {
+        case 'Attack Guards': attackGuards();
+            //handle this onClick
+        break;
+        case 'Avoid Guards': avoidGuards();
+            //handle this onClick
+        break;
     }
+});
