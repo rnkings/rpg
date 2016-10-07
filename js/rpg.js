@@ -142,7 +142,7 @@ function displayEvent(event) {
             break;
             
             case "3":
- 			break;
+            break;
         }
 
     }else{
