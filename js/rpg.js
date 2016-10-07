@@ -140,12 +140,20 @@ function updateTotalStats(player, totalGold, totalHealth){
 //how to print just text and not a decision, is it a function since they need to
 //click a button to get to next function option
 
-function attackGuards(){
+function attackThieves(){
 
 }
 
-function avoidGuards(){
+function payThieves(){
 
+}
+
+function attackTroll(){
+
+}
+
+function payTroll(){
+    
 }
 
 // var text;
@@ -164,16 +172,29 @@ function avoidGuards(){
 //     }
 // });
 
-function newPage(){
-    document.getElementById("gameArea").innerHTML = "<div>You are being attacked by gang of thieves! To Fight back select 1.  To pay them off press 2</div";
+// function newPage(){
+//     document.getElementById("gameArea").innerHTML = "<div>You are being attacked by gang of thieves! To Fight back select 1.  To pay them off press 2</div";
 
+// }
+
+
+
+function encounterGangOfThieves() {
+var htmlOutput = "<h1> You have been ambushed by a gang of thieves! </h1>";
+htmlOutput += "<p> Do you want to fight them or pay them and leave. </p>";
+htmlOutput += '<button onclick="attackThieves()" type="button">Fight</button>';
+htmlOutput += '<button onclick="payThieves()" type="button">Pay off</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+random(6);
 }
 
-
-
-
-
-
+function encounterTroll() {
+var htmlOutput = "<h1> Oops you came across a troll! </h1>";
+htmlOutput += "<p> Will you fight him or throw gold as a distraction to run away. </p>";
+htmlOutput += '<button onclick="attackTroll()" type="button">Fight</button>';
+htmlOutput += '<button onclick="payTroll()" type="button">Throw gold</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
 
 
