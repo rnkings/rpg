@@ -6,42 +6,28 @@ function Character(type) {
     this.gold = 1;
     this.type = type;
 
- } 
-
-
-	 //making random events based on how much gold or health they give or make
-var badAndGoodEvents = 
-	[	
-		{situation: "clawed by bear", healthAmount: -5, goldAmount: 0}, 
-		{situation: "Found deer hide you can trade in town", healthAmount: 0, goldAmount: 5}, 
-		{situation: "Tripped on a pebble", healthAmount: -1, goldAmount:0}, 
-		{situation: "You found some clean water", healthAmount: 2, goldAmount:0}, 
-		{situation: "You are dehydrated", healthAmount: -1, goldAmount:0}, 
-		{situation: "You found shelter before a storm", healthAmount: 1, goldAmount:0}, 
-		{situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:-2}, 
-		{situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:5}, 
-		{situation: "Robbed by a gang of thieves", healthAmount:0, goldAmount:-5}, 
-		{situation: "You encounter a traveling healer, who offers to examine you and heal any wounds or illnesses you may have", healthAmount: 5, goldAmount: 0},
-		{situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}
-	];
-
-	
-var randomEvent = [];
-for (var i=0;i<1;i++){
-	rand()
 }
 
-console.log(randomEvent);
-
-function rand(){
-	var random = badAndGoodEvents[Math.floor(Math.random() * badAndGoodEvents.length)];
-
-	if (randomEvent.indexOf(random) == -1)
-		randomEvent.push(random);
-	else
-		rand();
+Character.prototype.eventOccurred = function (event) {
+    this.affectGold(event.goldAmount);
+    this.affectHealth(event.healthAmount);
 }
 
+Character.prototype.affectGold = function (goldChange) {
+    this.gold+= goldChange;
+    if (this.gold < 0) {
+        this.gold = 0;
+    }
+}
+
+Character.prototype.affectHealth = function (healthChange) {
+    this.health+= healthChange;
+    if (this.health <= 0) {
+        //Character is dead
+        //TODO handle death
+        this.health = 0;
+    }
+}
 
 //This is attaching methods to our class
 Character.prototype.getHealth = function () {
@@ -93,7 +79,58 @@ function chooseCharacter(type) {
     console.log(player.getHealth());
     console.log(player.getGold());
     console.log(player.getType());
+
+    var event = rand();
+    console.log(event);
+    player.eventOccurred(event);
+    displayEvent(event);
+
     return player;
+}
+
+
+
+     //making random events based on how much gold or health they give or make
+var badAndGoodEvents = 
+    [   
+        {situation: "clawed by bear", healthAmount: -5, goldAmount: 0}, 
+        {situation: "Found deer hide you can trade in town", healthAmount: 0, goldAmount: 5}, 
+        {situation: "Tripped on a pebble", healthAmount: -1, goldAmount:0}, 
+        {situation: "You found some clean water", healthAmount: 2, goldAmount:0}, 
+        {situation: "You are dehydrated", healthAmount: -1, goldAmount:0}, 
+        {situation: "You found shelter before a storm", healthAmount: 1, goldAmount:0}, 
+        {situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:-2}, 
+        {situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:5}, 
+        {situation: "Robbed by a gang of thieves", healthAmount:0, goldAmount:-5}, 
+        {situation: "You encounter a traveling healer, who offers to examine you and heal any wounds or illnesses you may have", healthAmount: 5, goldAmount: 0},
+        {situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}
+    ];
+
+    
+var randomEvent = [];
+for (var i=0;i<1;i++){
+    rand();
+}
+
+console.log(randomEvent);
+
+function rand(){
+    var random = badAndGoodEvents[Math.floor(Math.random() * badAndGoodEvents.length)];
+
+    if (randomEvent.indexOf(random) == -1) {
+        randomEvent.push(random);
+        return random;
+    }
+    else
+        return rand();
+}
+
+function displayEvent(event) {
+    var eventElement = document.querySelector('p.event');
+    var text = "Situation: " + event.situation + "<br>";
+    text+= "Gold effect: " + event.goldAmount + "<br>";
+    text+= "Health effect: " + event.healthAmount + "<br>";
+    eventElement.innerHTML = text;
 }
         
         switch(lookingFor){
