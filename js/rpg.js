@@ -264,7 +264,7 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
 function leaveThruBack() {
-var htmlOutput = "<p>Leaving quietly out the back, you head into the alley hoping to leave the city without being seen. Unfortunately, a gang of thieves is hanging out in the alley, waiting for unsuspecting temple worshipers to take their gold. Will you give them everything you have and leave without trouble, or attack them and teach them a lesson?</p>";
+var htmlOutput = "<p>Leaving quietly out the back, you head into the alley hoping to leave the city without being seen. Unfortunately, a gang of thieves is hanging out in the alley, waiting to take unsuspecting temple worshipers' gold. Will you give them everything you have and leave without trouble, or attack them and teach them a lesson?</p>";
 htmlOutput += '<button onclick="attackThieves()" type="button">Attack</button>';
 htmlOutput += '<button onclick="payTheives()" type="button">Pay Off</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
@@ -277,6 +277,7 @@ htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
+//IF SIDE DOOR, THEN THESE TWO FUNCTIONS
 function attackBishop() {
 var htmlOutput = "<p>You attack the Bishop, leaving him a bloody mess. Unfortunately he had a dagger on him, and although was able to get a few minor cuts in, ultimately you emerge victorious! You take his gold, and continue on toward the city gates.</p>";
 htmlOutput += '<button onclick="encounterGateGuardsOne()" type="button">Continue on!</button>';
@@ -284,39 +285,38 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
 function payBishop() {
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="encounterGateGuardsTwo()" type="button">Attack</button>';
+var htmlOutput = "<p>You give the Bishop 5 gold pieces, who greedily snatches them out of your hand. 'Glad you know your place' he snarls, as he continues on into the temple. Seething, you continue on toward the city gates hoping that this was worth it.</p>";
+htmlOutput += '<button onclick="encounterGateGuardsTwo()" type="button">Continue on.</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
-function attackThieves(){
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
-htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+//IF BACK DOOR, THEN THESE TWO FUNCTIONS
+function attackThieves() {
+var htmlOutput = "<p>You decide not to give in to the thieves, and brandish your weapon(s). They surround you, and one by one begin to attack. Your superior training and fighting abilities kick in, and you systematically defeat every last one of them. You are not unscathed, however. You take their gold, and leave them groaning and heaped up on the ground. You continue heading on toward the city gates.</p>";
+htmlOutput += '<button onclick="encounterGateGuardsOne()" type="button">Continue on!</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
-function payThieves(){
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
-htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+function payThieves() {
+var htmlOutput = "<p>You decide to pay off the thieves, not being fully certain that they will leave you alone. However, after a few tense moments, then gang leader smiles menacingly and lets you pass by. 'You may not be so lucky next time' he says, as you continue on toward the city gates.</p>";
+htmlOutput += '<button onclick="encounterGateGuardsTwo()" type="button">Continue on.</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
+//IF MAIN TEMPLE DOORS, THEN THESE TWO FUNCTIONS
 function attackGuard() {
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
-htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+var htmlOutput = "<p>You rush the guard and attack. He is heavily armored, but because you rushed forward you gain an advantage. You get a few good blows in before he draws his sword, but the battle intensifies once he does. After a long period of exchanging blows, you emerge victorious! You take the guard's gold, and limp on toward the city gate.</p>";
+htmlOutput += '<button onclick="encounterGateGuardsOne()" type="button">Continue on!</button>'
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
 function bribeGuard() {
 var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
-htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+htmlOutput += '<button onclick="encounterGateGuards()" type="button">Continue on.</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
+//IF ANY CHARACTER CHOSE TO FIGHT, THEN THIS FUNCTION
 function encounterGateGuardsOne() {
 var htmlOutput = "<p>You come upon the city gates. However, city peasants saw your previous battle and alerted the guards. The gate guards see you, and begin to approach. Do you rush forward and attack, or pay them off to look the other way?</p>";
 htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
@@ -324,6 +324,7 @@ htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
+//IF ANY CHARACTER CHOSE TO BRIBE/PAY OFF, THEN THIS FUNCTION
 function encounterGateGuardsTwo() {
 var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
 htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
@@ -331,9 +332,9 @@ htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
-function () {
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
-htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
-document.getElementById("gameArea").innerHTML= htmlOutput; 
-}
+// function () {
+// var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+// htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
+// htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
+// document.getElementById("gameArea").innerHTML= htmlOutput; 
+// }
