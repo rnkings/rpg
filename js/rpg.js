@@ -206,16 +206,28 @@ function announceHealthAmount() {
 
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
+    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live.</p>";
+    htmlOutput += '<button onclick="nunBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    // subtractFiveGold();
+    document.getElementById("gameArea").innerHTML= htmlOutput;
+
 //SAME TEMPLATE AS FUNCTIONS BELOW, JUST MAKE THE BUTTON CORRESPOND WITH THE APPROPRIATE TEMPLE CHOICE FUNCTION, OR TELL THEM TO JUST REFRESH PAGE IN THE TEXT
 }
 
 function nunBackStory() {
+    var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring.</p>";
+    htmlOutput += '<button onclick="priestBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    // subtractFiveGold();
+    document.getElementById("gameArea").innerHTML= htmlOutput;
 
 }
 
 function priestBackStory() {
-
+    var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life.</p>";
+    htmlOutput += '<button onclick="monkBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    document.getElementById("gameArea").innerHTML= htmlOutput;
 }
+
 //Warrior Monk Beginning Choice.
 function monkTempleChoice() {
 var htmlOutput = "<p>You, the Battle Nun, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits; the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?</p>";
