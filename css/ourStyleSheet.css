@@ -6,3 +6,6 @@ header .header-content .header-content-inner p{
     align
 }
 
+button, input, optgroup, select, textarea {
+	color:black;
+}
