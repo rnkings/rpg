@@ -204,7 +204,7 @@ function modifyHealth(difference) {
 
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
-    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
+    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
     htmlOutput += '<button onclick="chooseCharacter(\'warrior monk\');monkTempleChoice()" type="button">Start Warrior Monk</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
