@@ -1,11 +1,14 @@
 "use strict";
 
+var player;
 
-function Character(type) {
+function Character() {
     this.health = 100;
-    this.gold = 1;
-    this.type = type;
+    this.gold = 25;
 
+        this.modifyHealth = function(difference){
+            this.health = this.health + difference;
+        }
 }
 
 Character.prototype.eventOccurred = function (event) {
@@ -42,48 +45,57 @@ Character.prototype.getType = function () {
     return this.type;
 }
 
-function BattleNun() {
+function BattleNun(type) {
+    this.type = type;
     //We call the Character constructor
     //the first argument is the current scope (this), the second and onward are all the arguments to the parent
-    Character.call(this, 'battle nun');
+    // Character.call(this, 'battle nun');
 }
 
 //This "inherits" from our Character class, so BattleNun derives from it
-BattleNun.prototype = Object.create(Character.prototype);
+BattleNun.prototype = new Character();
+
 //We should set the constructor on here to our constructor
 BattleNun.prototype.constructor = BattleNun;
 
 
-function WarriorMonk() {
+function WarriorMonk(type) {
+    this.type = type;
+
     //We call the Character constructor
     //the first argument is the current scope (this), the second and onward are all the arguments to the parent
-    Character.call(this, 'warrior monk');
+    // Character.call(this, 'warrior monk');
 }
 
 //This "inherits" from our Character class, so WarriorMonk derives from it
-WarriorMonk.prototype = Object.create(Character.prototype);
+WarriorMonk.prototype = new Character();
 //We should set the constructor on here to our constructor
 WarriorMonk.prototype.constructor = WarriorMonk;
 
-function assassinPriest() {
+function AssassinPriest(type) {
+    this.type = type;
     //We call the Character constructor
     //the first argument is the current scope (this), the second and onward are all the arguments to the parent
-    Character.call(this, 'assassin priest');
+    // Character.call(this, 'assassin priest');
 }
 
-//This "inherits" from our Character class, so WarriorMonk derives from it
-assassinPriest.prototype = Object.create(Character.prototype);
-//We should set the constructor on here to our constructor
-assassinPriest.prototype.constructor = assassinPriest;
+// //This "inherits" from our Character class, so WarriorMonk derives from it
+AssassinPriest.prototype = new Character();
+// //We should set the constructor on here to our constructor
+AssassinPriest.prototype.constructor = AssassinPriest;
 
 function chooseCharacter(type) {
-    var player;
 
     if (type === 'battle nun') {
         player = new BattleNun();
     } else if (type === 'warrior monk') {
         player = new WarriorMonk();
+    } else if (type === 'assassin priest') {
+        player = new AssassinPriest()
     }
+        else {
+            return;
+        }
 
     console.log(player.getHealth());
     console.log(player.getGold());
@@ -173,34 +185,9 @@ function updateTotalStats(player, totalGold, totalHealth){
 // }
 
 //HEALTH FUNCTIONS, CALL THESE FUNCTIONS IN EACH RANDOM EVENT, AND ALSO INSIDE CORRESPONDING ONCLICK EVENTS FOR EACH CHOICE.
-var healthCount = 100;
 
 function modifyHealth(difference) {
-    healthCount = healthCount + parseInt(difference);
-}
-
-function addOneHealthPoint() {
-    modifyHealth(1);
-}
-
-function addThreeHealthPoints() {
-    modifyHealth(3);
-}
-
-function addFiveHealthPoints() {
-    modifyHealth(5);
-}
-
-function subtractOneHealthPoint() {
-    modifyHealth(-1);
-}
-
-function subtractThreeHealthPoints() {
-    modifyHealth(-3);
-}
-
-function subtractFiveHealthPoints() {
-    modifyHealth(-5);
+    this.health = this.health + difference;
 }
 
 //ALERT THESE FUNCTIONS AT THE END OF THE GAME.
@@ -216,7 +203,7 @@ function announceHealthAmount() {
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
     var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
-    htmlOutput += '<button onclick="battleNun()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    htmlOutput += '<button onclick="chooseCharacter();monkTempleChoice()" type="button">Start Warrior Monk</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
@@ -225,7 +212,7 @@ function monkBackStory() {
 
 function nunBackStory() {
     var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring. If you want to play this character click the button below if you want to see the other back stories refresh the page.</p>";
-    htmlOutput += '<button onclick="assassinPriest()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    htmlOutput += '<button onclick="chooseCharacter();nunTempleChoice()" type="button">Start Battle Nun</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
@@ -233,7 +220,7 @@ function nunBackStory() {
 
 function priestBackStory() {
     var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life. If you want to play this character click the button below if you want to see other back stories refresh the page.</p>";
-    htmlOutput += '<button onclick="warriorMonk()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    htmlOutput += '<button onclick="chooseCharacter();priestTempleChoice()" type="button">Start Assassin Priest</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
@@ -267,9 +254,10 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 
 function leaveThruSide() {
 var htmlOutput = "<p>Leaving quickly through the side entrance, you head out into the main street. In your haste, you almost bump into a corrupt bishop on his way into the temple. He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods. Do you pay him off and leave in peace, or attack and stand up for yourself?</p>";
-htmlOutput += '<button onclick="attackBishop()" type="button">Attack</button>';
+htmlOutput += '<button onclick="attackBishop(); player.modifyHealth(-5)" type="button">Attack</button>';
 htmlOutput += '<button onclick="payBishop()" type="button">Make "Offering"</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
+alert(player.health);
 }
 
 function leaveThruBack() {
@@ -347,3 +335,4 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 // htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
 // document.getElementById("gameArea").innerHTML= htmlOutput; 
 // }
+
