@@ -204,7 +204,7 @@ function modifyHealth(difference) {
 
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
-    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
+    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
     htmlOutput += '<button onclick="chooseCharacter(\'warrior monk\');monkTempleChoice()" type="button">Start Warrior Monk</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
@@ -213,14 +213,14 @@ function monkBackStory() {
 }
 
 function nunBackStory() {
-    var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring. If you want to play this character click the button below if you want to see the other back stories refresh the page.</p>";
+    var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  If you want to play this character click the button below if you want to see the other back stories refresh the page.</p>";
     htmlOutput += '<button onclick="chooseCharacter(\'battle nun\');nunTempleChoice()" type="button">Start Battle Nun</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
 }
 
 function priestBackStory() {
-    var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life. If you want to play this character click the button below if you want to see other back stories refresh the page.</p>";
+    var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. If you want to play this character click the button below if you want to see other back stories refresh the page.</p>";
     htmlOutput += '<button onclick="chooseCharacter(\'assassin priest\');priestTempleChoice()" type="button">Start Assassin Priest</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 }
