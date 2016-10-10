@@ -329,20 +329,20 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
 function attackGateGuards() {
-var htmlOutput = "<p></p>";
+var htmlOutput = "<p>Not wanting to take any chances, you rush forward and attack the guards before they can even begin to question you. Despite being outnumbered, you have an advantage from rushing forward and you unleash a fury of blows on the two guards. Because you are slightly injured from your previous battle they are able to land a few cuts, but eventually you overcome them both and escape through the gates!  </p>";
 htmlOutput += '<button onclick="decideMountainsOrForest()" type="button">Exit City</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
 function bribeGateGuards() {
-var htmlOutput = "<p></p>";
+var htmlOutput = "<p>As the guards approach you and begin questioning you, you take out a small sack of gold and discreetly place it in one of the guard's hands. They look at each other momentarily, and then decide you're not worth pursuing. They wave you through, even though you're a little bitter about parting with that gold.</p>";
 htmlOutput += '<button onclick="decideMountainsOrForest()" type="button">Exit City</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
 function decideMountainsOrForest() {
-var htmlOutput = "<p></p>";
-htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
-htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
+var htmlOutput = "<p>As you exit the gates, you begin to tread down the wide gravel path leading out of the city. As you take in a deep breath, you gaze out at the wild country before you. The path eventually forks on the horizon, one leading left to the Dewy Mountains and the other right, to the Forest of Perpetual Shadow. Which path do you choose?</p>";
+htmlOutput += '<button onclick="FUNCTION" type="button">Dewy Mountains</button>';
+htmlOutput += '<button onclick="FUNCTION" type="button">Forest of Perpetual Shadow</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
