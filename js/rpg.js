@@ -1,6 +1,8 @@
 "use strict";
 
-var player;
+var player1 = new BattleNun();
+var player2 = new WarriorMonk();
+var player3 = new AssassinPriest();
 
 function Character() {
     this.health = 100;
@@ -87,11 +89,11 @@ AssassinPriest.prototype.constructor = AssassinPriest;
 function chooseCharacter(type) {
 
     if (type === 'battle nun') {
-        player = new BattleNun();
+        player1 = new BattleNun();
     } else if (type === 'warrior monk') {
-        player = new WarriorMonk();
+        player2 = new WarriorMonk();
     } else if (type === 'assassin priest') {
-        player = new AssassinPriest()
+        player3 = new AssassinPriest()
     }
         else {
             return;
@@ -254,10 +256,10 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 
 function leaveThruSide() {
 var htmlOutput = "<p>Leaving quickly through the side entrance, you head out into the main street. In your haste, you almost bump into a corrupt bishop on his way into the temple. He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods. Do you pay him off and leave in peace, or attack and stand up for yourself?</p>";
-htmlOutput += '<button onclick="attackBishop(); player.modifyHealth(-5)" type="button">Attack</button>';
+htmlOutput += '<button onclick="attackBishop(); player1.modifyHealth(-5)" type="button">Attack</button>';
 htmlOutput += '<button onclick="payBishop()" type="button">Make "Offering"</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
-alert(player.health);
+alert(player1.health);
 }
 
 function leaveThruBack() {
