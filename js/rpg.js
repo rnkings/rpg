@@ -164,71 +164,35 @@ function updateTotalStats(player, totalGold, totalHealth){
 // }
 
 //HEALTH FUNCTIONS, CALL THESE FUNCTIONS IN EACH RANDOM EVENT, AND ALSO INSIDE CORRESPONDING ONCLICK EVENTS FOR EACH CHOICE.
+var healthCount = 100;
+
+function modifyHealth(difference) {
+    healthCount = healthCount + parseInt(difference);
+}
+
 function addOneHealthPoint() {
-    healthCount.push(1);
+    modifyHealth(1);
 }
 
 function addThreeHealthPoints() {
-    healthCount.push(1,1,1);
+    modifyHealth(3);
 }
 
 function addFiveHealthPoints() {
-    healthCount.push(1,1,1,1,1);
+    modifyHealth(5);
 }
 
 function subtractOneHealthPoint() {
-    healthCount.pop();
+    modifyHealth(-1);
 }
 
 function subtractThreeHealthPoints() {
-    healthCount.pop();
-    healthCount.pop();
-    healthCount.pop();
+    modifyHealth(-3);
 }
 
 function subtractFiveHealthPoints() {
-    healthCount.pop();
-    healthCount.pop();
-    healthCount.pop();
-    healthCount.pop();
-    healthCount.pop();
+    modifyHealth(-5);
 }
-
-//GOLD FUNCTIONS, CALL THESE FUNCTIONS IN EACH RANDOM EVENT, AND ALSO INSIDE CORRESPONDING ONCLICK EVENTS FOR EACH CHOICE.
-function addOneGold() {
-    goldCount.push(1);
-}
-
-function addThreeGold() {
-    goldCount.push(1,1,1);
-}
-
-function addFiveGold() {
-    goldCount.push(1,1,1,1,1);
-}
-
-function subtractOneGold() {
-    goldCount.pop();
-}
-
-function subtractThreeGold() {
-    goldCount.pop();
-    goldCount.pop();
-    goldCount.pop();
-}
-
-function subtractFiveGold() {
-    goldCount.pop();
-    goldCount.pop();
-    goldCount.pop();
-    goldCount.pop();
-    goldCount.pop();
-}
-
-var goldCount = [];
-
-var healthCount = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100];
-
 
 //ALERT THESE FUNCTIONS AT THE END OF THE GAME.
 function announceGoldAmount() {
@@ -245,6 +209,7 @@ var htmlOutput = "<p>You, the Battle Nun, and the Assassin Priest meet in the An
 htmlOutput += '<button onclick="leaveThruBack()" type="button">Leave quietly out the back.</button>';
 htmlOutput += '<button onclick="leaveThruSide()" type="button">Leave quickly out the side entrance.</button>';
 htmlOutput += '<button onclick="leaveThruMain()" type="button">Leave out the main entrance to the city market.</button>';
+subtractFiveGold();
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
