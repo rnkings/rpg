@@ -1,8 +1,6 @@
 "use strict";
 
-var player1 = new BattleNun();
-var player2 = new WarriorMonk();
-var player3 = new AssassinPriest();
+var player;
 
 function Character() {
     this.health = 100;
@@ -58,7 +56,7 @@ function BattleNun(type) {
 BattleNun.prototype = new Character();
 
 //We should set the constructor on here to our constructor
-BattleNun.prototype.constructor = BattleNun;
+// BattleNun.prototype.constructor = BattleNun;
 
 
 function WarriorMonk(type) {
@@ -72,7 +70,7 @@ function WarriorMonk(type) {
 //This "inherits" from our Character class, so WarriorMonk derives from it
 WarriorMonk.prototype = new Character();
 //We should set the constructor on here to our constructor
-WarriorMonk.prototype.constructor = WarriorMonk;
+// WarriorMonk.prototype.constructor = WarriorMonk;
 
 function AssassinPriest(type) {
     this.type = type;
@@ -84,16 +82,16 @@ function AssassinPriest(type) {
 // //This "inherits" from our Character class, so WarriorMonk derives from it
 AssassinPriest.prototype = new Character();
 // //We should set the constructor on here to our constructor
-AssassinPriest.prototype.constructor = AssassinPriest;
+// AssassinPriest.prototype.constructor = AssassinPriest;
 
 function chooseCharacter(type) {
 
     if (type === 'battle nun') {
-        player1 = new BattleNun();
+        player = new BattleNun();
     } else if (type === 'warrior monk') {
-        player2 = new WarriorMonk();
+        player = new WarriorMonk();
     } else if (type === 'assassin priest') {
-        player3 = new AssassinPriest()
+        player = new AssassinPriest()
     }
         else {
             return;
@@ -103,63 +101,65 @@ function chooseCharacter(type) {
     console.log(player.getGold());
     console.log(player.getType());
 
-    var event = rand();
-    console.log(event);
-    player.eventOccurred(event);
-    displayEvent(event);
+    // var event = rand();
+    // console.log(event);
+    // player.eventOccurred(event);
+    // displayEvent(event);
 
     return player;
 }
 
 
 
-     //making random events based on how much gold or health they give or make
-var badAndGoodEvents = 
-    [   
-        {situation: "clawed by bear", healthAmount: -5, goldAmount: 0}, 
-        {situation: "Found deer hide you can trade in town", healthAmount: 0, goldAmount: 5}, 
-        {situation: "Tripped on a pebble", healthAmount: -1, goldAmount:0}, 
-        {situation: "You found some clean water", healthAmount: 2, goldAmount:0}, 
-        {situation: "You are dehydrated", healthAmount: -1, goldAmount:0}, 
-        {situation: "You found shelter before a storm", healthAmount: 1, goldAmount:0}, 
-        {situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:-2}, 
-        {situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:5}, 
-        {situation: "Robbed by a gang of thieves", healthAmount:0, goldAmount:-5}, 
-        {situation: "You encounter a traveling healer, who offers to examine you and heal any wounds or illnesses you may have", healthAmount: 5, goldAmount: 0},
-        {situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}
-    ];
+     //RANDOM EVENTS STUFF
+// var badAndGoodEvents = 
+//     [   
+//         {situation: "clawed by bear", healthAmount: -5, goldAmount: 0}, 
+//         {situation: "Found deer hide you can trade in town", healthAmount: 0, goldAmount: 5}, 
+//         {situation: "Tripped on a pebble", healthAmount: -1, goldAmount:0}, 
+//         {situation: "You found some clean water", healthAmount: 2, goldAmount:0}, 
+//         {situation: "You are dehydrated", healthAmount: -1, goldAmount:0}, 
+//         {situation: "You found shelter before a storm", healthAmount: 1, goldAmount:0}, 
+//         {situation: "You have a hole in your pocket and lost some gold", healthAmount: 0, goldAmount:-2}, 
+//         {situation: "A good samaritan gave you some gold", healthAmount: 0, goldAmount:5}, 
+//         {situation: "Robbed by a gang of thieves", healthAmount:0, goldAmount:-5}, 
+//         {situation: "You encounter a traveling healer, who offers to examine you and heal any wounds or illnesses you may have", healthAmount: 5, goldAmount: 0},
+//         {situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}
+//     ];
 
-function getRandomEvent()
-{
-    var randomEvent = [];
-        for (var i=0;i<1;i++){
-            rand();
-        }
-    console.log(randomEvent);   
-}   
+// function getRandomEvent()
+// {
+//     var randomEvent = [];
+//         for (var i=0;i<1;i++){
+//             rand();
+//         }
+//     console.log(randomEvent);   
+// }   
 
-function rand(){
-    var random = badAndGoodEvents[Math.floor(Math.random() * badAndGoodEvents.length)];
+// function rand(){
+//     var random = badAndGoodEvents[Math.floor(Math.random() * badAndGoodEvents.length)];
 
-    if (randomEvent.indexOf(random) == -1) {
-        randomEvent.push(random);
-        return random;
-    }
-    else
-        return rand();
-}
+//     if (randomEvent.indexOf(random) == -1) {
+//         randomEvent.push(random);
+//         return random;
+//     }
+//     else
+//         return rand();
+// }
 
-function displayEvent(event) {
-    var eventElement = document.querySelector('p.event');
-    var text = "Situation: " + event.situation + "<br>";
-    text+= "Gold effect: " + event.goldAmount + "<br>";
-    text+= "Health effect: " + event.healthAmount + "<br>";
-    eventElement.innerHTML = text;
-}
+// function displayEvent(event) {
+//     var eventElement = document.querySelector('p.event');
+//     var text = "Situation: " + event.situation + "<br>";
+//     text+= "Gold effect: " + event.goldAmount + "<br>";
+//     text+= "Health effect: " + event.healthAmount + "<br>";
+//     eventElement.innerHTML = text;
+// }
 
-function updateTotalStats(player, totalGold, totalHealth){
+//END RANDOM EVENTS STUFF
 
-}
+// function updateTotalStats(player, totalGold, totalHealth){
+
+// }
 
 //how to print just text and not a decision, is it a function since they need to
 //click a button to get to next function option
@@ -193,19 +193,19 @@ function modifyHealth(difference) {
 }
 
 //ALERT THESE FUNCTIONS AT THE END OF THE GAME.
-function announceGoldAmount() {
-    alert(goldCount.length);
-}
+// function announceGoldAmount() {
+//     alert(goldCount.length);
+// }
 
-function announceHealthAmount() {
-    alert(healthCount.length);
-}
+// function announceHealthAmount() {
+//     alert(healthCount.length);
+// }
 
 
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
     var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
-    htmlOutput += '<button onclick="chooseCharacter();monkTempleChoice()" type="button">Start Warrior Monk</button>';
+    htmlOutput += '<button onclick="chooseCharacter(\'warrior monk\');monkTempleChoice()" type="button">Start Warrior Monk</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
@@ -214,15 +214,14 @@ function monkBackStory() {
 
 function nunBackStory() {
     var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring. If you want to play this character click the button below if you want to see the other back stories refresh the page.</p>";
-    htmlOutput += '<button onclick="chooseCharacter();nunTempleChoice()" type="button">Start Battle Nun</button>';
-    // subtractFiveGold();
+    htmlOutput += '<button onclick="chooseCharacter(\'battle nun\');nunTempleChoice()" type="button">Start Battle Nun</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
 }
 
 function priestBackStory() {
     var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life. If you want to play this character click the button below if you want to see other back stories refresh the page.</p>";
-    htmlOutput += '<button onclick="chooseCharacter();priestTempleChoice()" type="button">Start Assassin Priest</button>';
+    htmlOutput += '<button onclick="chooseCharacter(\'assassin priest\');priestTempleChoice()" type="button">Start Assassin Priest</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
@@ -232,7 +231,6 @@ var htmlOutput = "<p>You, the Battle Nun, and the Assassin Priest meet in the An
 htmlOutput += '<button onclick="leaveThruBack()" type="button">Leave quietly out the back.</button>';
 htmlOutput += '<button onclick="leaveThruSide()" type="button">Leave quickly out the side entrance.</button>';
 htmlOutput += '<button onclick="leaveThruMain()" type="button">Leave out the main entrance to the city market.</button>';
-// subtractFiveGold();
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
@@ -256,10 +254,10 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 
 function leaveThruSide() {
 var htmlOutput = "<p>Leaving quickly through the side entrance, you head out into the main street. In your haste, you almost bump into a corrupt bishop on his way into the temple. He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods. Do you pay him off and leave in peace, or attack and stand up for yourself?</p>";
-htmlOutput += '<button onclick="attackBishop(); player1.modifyHealth(-5)" type="button">Attack</button>';
+htmlOutput += '<button onclick="attackBishop(); player.modifyHealth(-5)" type="button">Attack</button>';
 htmlOutput += '<button onclick="payBishop()" type="button">Make "Offering"</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
-alert(player1.health);
+alert(player.health);
 }
 
 function leaveThruBack() {
@@ -291,7 +289,7 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 
 //IF BACK DOOR, THEN THESE TWO FUNCTIONS
 function attackThieves() {
-var htmlOutput = "<p>You decide not to give in to the thieves, and brandish your weapon(s). They surround you, and one by one begin to attack. Your superior training and fighting abilities kick in, and you systematically defeat every last one of them. You are not unscathed, however. You take their gold, and leave them groaning and heaped up on the ground. You continue heading on toward the city gates.</p>";
+var htmlOutput = "<p>You decide not to give in to the thieves, and brandish your weapon. They surround you, and one by one begin to attack. Your superior training and fighting abilities kick in, and you systematically defeat every last one of them. You are not unscathed, however. You take their gold, and leave them groaning and heaped up on the ground. You continue heading on toward the city gates.</p>";
 htmlOutput += '<button onclick="encounterGateGuardsOne()" type="button">Continue on!</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
@@ -311,30 +309,40 @@ document.getElementById("gameArea").innerHTML= htmlOutput;
 
 function bribeGuard() {
 var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-htmlOutput += '<button onclick="encounterGateGuards()" type="button">Continue on.</button>';
+htmlOutput += '<button onclick="encounterGateGuardsTwo()" type="button">Continue on.</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
 //IF ANY CHARACTER CHOSE TO FIGHT, THEN THIS FUNCTION
 function encounterGateGuardsOne() {
 var htmlOutput = "<p>You come upon the city gates. However, city peasants saw your previous battle and alerted the guards. The gate guards see you, and begin to approach. Do you rush forward and attack, or pay them off to look the other way?</p>";
-htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
-htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
+htmlOutput += '<button onclick="attackGateGuards()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGateGuards()" type="button">Bribe</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
 
 //IF ANY CHARACTER CHOSE TO BRIBE/PAY OFF, THEN THIS FUNCTION
 function encounterGateGuardsTwo() {
-var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+var htmlOutput = "<p>You come upon the city gates. As you begin to pass through the gates, the guards glance at you, and then wave you on. Good thing you didn't make a huge seen! You pass through peacefully, and successfully leave the city.</p>";
+htmlOutput += '<button onclick="decideMountainsOrForest()" type="button">Exit City</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput; 
+}
+
+function attackGateGuards() {
+var htmlOutput = "<p></p>";
+htmlOutput += '<button onclick="decideMountainsOrForest()" type="button">Exit City</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput; 
+}
+
+function bribeGateGuards() {
+var htmlOutput = "<p></p>";
+htmlOutput += '<button onclick="decideMountainsOrForest()" type="button">Exit City</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput; 
+}
+
+function decideMountainsOrForest() {
+var htmlOutput = "<p></p>";
 htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
 htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput; 
 }
-
-// function () {
-// var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
-// htmlOutput += '<button onclick="FUNCTION" type="button">Attack</button>';
-// htmlOutput += '<button onclick="FUNCTION" type="button">Bribe</button>';
-// document.getElementById("gameArea").innerHTML= htmlOutput; 
-// }
-
