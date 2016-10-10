@@ -65,7 +65,16 @@ WarriorMonk.prototype = Object.create(Character.prototype);
 //We should set the constructor on here to our constructor
 WarriorMonk.prototype.constructor = WarriorMonk;
 
+function assassinPriest() {
+    //We call the Character constructor
+    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
+    Character.call(this, 'assassin priest');
+}
 
+//This "inherits" from our Character class, so WarriorMonk derives from it
+assassinPriest.prototype = Object.create(Character.prototype);
+//We should set the constructor on here to our constructor
+assassinPriest.prototype.constructor = assassinPriest;
 
 function chooseCharacter(type) {
     var player;
@@ -206,8 +215,8 @@ function announceHealthAmount() {
 
 //BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
-    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live.</p>";
-    htmlOutput += '<button onclick="nunBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    var htmlOutput = "<p>The monks of Tanai worship the earth and how it keeps it's people grounded and humble. The dance of life and death is passed through the dirt from this world to another.  The monks believe if people worship the earth, Tanai will become a more peaceful and hospital place to live. If you want to play this character click the button below. If you want to see more refresh the page.</p>";
+    htmlOutput += '<button onclick="battleNun()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
@@ -215,16 +224,16 @@ function monkBackStory() {
 }
 
 function nunBackStory() {
-    var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring.</p>";
-    htmlOutput += '<button onclick="priestBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    var htmlOutput = "<p>The nuns of Tanai worship the sun and how its brilliance encourages peoples good deads to shine.  The nun's believe if Tanai were to worship the sun its people would become more generous and caring. If you want to play this character click the button below if you want to see the other back stories refresh the page.</p>";
+    htmlOutput += '<button onclick="assassinPriest()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
     // subtractFiveGold();
     document.getElementById("gameArea").innerHTML= htmlOutput;
 
 }
 
 function priestBackStory() {
-    var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life.</p>";
-    htmlOutput += '<button onclick="monkBackStory()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
+    var htmlOutput = "<p>The priests of Tanai worship the moon and how it guides people into the light when the world is at its darkest moment. The priests hope that if the people of Tanai worshiped the moon they would become the light of hope to guide others to a better way of life. If you want to play this character click the button below if you want to see other back stories refresh the page.</p>";
+    htmlOutput += '<button onclick="warriorMonk()" type="button">If you want to see the rest of the back stories refresh the page.</button>';
     document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
