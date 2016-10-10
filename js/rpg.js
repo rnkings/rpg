@@ -106,13 +106,14 @@ var badAndGoodEvents =
         {situation: "A terrible storm passes through, and you get caught in it. You make it through, but you are wet and get a cold.", healthAmount: -5, goldAmount: 0}
     ];
 
-    
-var randomEvent = [];
-for (var i=0;i<1;i++){
-    rand();
-}
-
-console.log(randomEvent);
+function getRandomEvent()
+{
+    var randomEvent = [];
+        for (var i=0;i<1;i++){
+            rand();
+        }
+    console.log(randomEvent);   
+}   
 
 function rand(){
     var random = badAndGoodEvents[Math.floor(Math.random() * badAndGoodEvents.length)];
@@ -140,21 +141,6 @@ function updateTotalStats(player, totalGold, totalHealth){
 //how to print just text and not a decision, is it a function since they need to
 //click a button to get to next function option
 
-function attackThieves(){
-
-}
-
-function payThieves(){
-
-}
-
-function attackTroll(){
-
-}
-
-function payTroll(){
-    
-}
 
 // var text;
 // document.querySelector('button.button-class').addEventListener('click', function (e) {
@@ -177,32 +163,168 @@ function payTroll(){
 
 // }
 
-
-
-function encounterGangOfThieves() {
-var htmlOutput = "<h1> You have been ambushed by a gang of thieves! </h1>";
-htmlOutput += "<p> Do you want to fight them or pay them and leave. </p>";
-htmlOutput += '<button onclick="attackThieves()" type="button">Fight</button>';
-htmlOutput += '<button onclick="payThieves()" type="button">Pay off</button>';
-document.getElementById("gameArea").innerHTML= htmlOutput;
-random(6);
+//HEALTH FUNCTIONS, CALL THESE FUNCTIONS IN EACH RANDOM EVENT, AND ALSO INSIDE CORRESPONDING ONCLICK EVENTS FOR EACH CHOICE.
+function addOneHealthPoint() {
+    healthCount.push(1);
 }
 
-function encounterTroll() {
-var htmlOutput = "<h1> Oops you came across a troll! </h1>";
-htmlOutput += "<p> Will you fight him or throw gold as a distraction to run away. </p>";
-htmlOutput += '<button onclick="attackTroll()" type="button">Fight</button>';
-htmlOutput += '<button onclick="payTroll()" type="button">Throw gold</button>';
+function addThreeHealthPoints() {
+    healthCount.push(1,1,1);
+}
+
+function addFiveHealthPoints() {
+    healthCount.push(1,1,1,1,1);
+}
+
+function subtractOneHealthPoint() {
+    healthCount.pop();
+}
+
+function subtractThreeHealthPoints() {
+    healthCount.pop();
+    healthCount.pop();
+    healthCount.pop();
+}
+
+function subtractFiveHealthPoints() {
+    healthCount.pop();
+    healthCount.pop();
+    healthCount.pop();
+    healthCount.pop();
+    healthCount.pop();
+}
+
+//GOLD FUNCTIONS, CALL THESE FUNCTIONS IN EACH RANDOM EVENT, AND ALSO INSIDE CORRESPONDING ONCLICK EVENTS FOR EACH CHOICE.
+function addOneGold() {
+    goldCount.push(1);
+}
+
+function addThreeGold() {
+    goldCount.push(1,1,1);
+}
+
+function addFiveGold() {
+    goldCount.push(1,1,1,1,1);
+}
+
+function subtractOneGold() {
+    goldCount.pop();
+}
+
+function subtractThreeGold() {
+    goldCount.pop();
+    goldCount.pop();
+    goldCount.pop();
+}
+
+function subtractFiveGold() {
+    goldCount.pop();
+    goldCount.pop();
+    goldCount.pop();
+    goldCount.pop();
+    goldCount.pop();
+}
+
+var goldCount = [];
+
+var healthCount = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99,100];
+
+
+//ALERT THESE FUNCTIONS AT THE END OF THE GAME.
+function announceGoldAmount() {
+    alert(goldCount.length);
+}
+
+function announceHealthAmount() {
+    alert(healthCount.length);
+}
+
+//Warrior Monk Beginning Choice.
+function monkTempleChoice() {
+var htmlOutput = "<p>You, the Battle Nun, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits; the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?</p>";
+htmlOutput += '<button onclick="leaveThruBack()" type="button">Leave quietly out the back.</button>';
+htmlOutput += '<button onclick="leaveThruSide()" type="button">Leave quickly out the side entrance.</button>';
+htmlOutput += '<button onclick="leaveThruMain()" type="button">Leave out the main entrance to the city market.</button>';
 document.getElementById("gameArea").innerHTML= htmlOutput;
 }
 
+//Battle Nun Beginning Choice.
+function nunTempleChoice() {
+var htmlOutput = "<p>You, the Warrior Monk, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits; the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?</p>";
+htmlOutput += '<button onclick="leaveThruBack()" type="button">Leave quietly out the back.</button>';
+htmlOutput += '<button onclick="leaveThruSide()" type="button">Leave quickly out the side entrance.</button>';
+htmlOutput += '<button onclick="leaveThruMain()" type="button">Leave out the main entrance to the city market.</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+//Assassin Priest Beginning Choice.
+function priestTempleChoice() {
+var htmlOutput = "<p>You, the Battle Nun, and the Warrior Monk meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits: the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?</p>";
+htmlOutput += '<button onclick="leaveThruBack()" type="button">Leave quietly out the back.</button>';
+htmlOutput += '<button onclick="leaveThruSide()" type="button">Leave quickly out the side entrance.</button>';
+htmlOutput += '<button onclick="leaveThruMain()" type="button">Leave out the main entrance to the city market.</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function leaveThruSide() {
+var htmlOutput = "<p>Leaving quickly through the side entrance, you head out into the main street. In your haste, you almost bump into a corrupt bishop on his way into the temple. He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods. Do you pay him off and leave in peace, or attack and stand up for yourself?</p>";
+htmlOutput += '<button onclick="attackBishop()" type="button">Attack</button>';
+htmlOutput += '<button onclick="payBishop()" type="button">Make "Offering"</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function leaveThruBack() {
+var htmlOutput = "<p>Leaving quietly out the back, you head into the alley hoping to leave the city without being seen. Unfortunately, a gang of thieves is hanging out in the alley, waiting for unsuspecting temple worshipers to take their gold. Will you give them everything you have and leave without trouble, or attack them and teach them a lesson?</p>";
+htmlOutput += '<button onclick="attackThieves()" type="button">Attack</button>';
+htmlOutput += '<button onclick="payTheives()" type="button">Pay Off</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function leaveThruMain() {
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function attackBishop() {
+var htmlOutput = "<p>You attack the Bishop, </p>";
+htmlOutput += '<button onclick="function()" type="button">TEXT</button>';
+htmlOutput += '<button onclick="function()" type="button">TEXT</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function payBishop() {
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function attackThieves(){
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function payThieves(){
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function attackGuard() {
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput;
+}
 
+function bribeGuard() {
+var htmlOutput = "<p>Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack? </p>";
+htmlOutput += '<button onclick="attackGuard()" type="button">Attack</button>';
+htmlOutput += '<button onclick="bribeGuard()" type="button">Bribe</button>';
+document.getElementById("gameArea").innerHTML= htmlOutput; 
+}
