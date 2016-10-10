@@ -48,42 +48,48 @@
                 </button>
                 <a class="navbar-brand page-scroll" href="#page-top">Relic Quest</a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="#about">About</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#services">Services</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
 
     <header>
-        <div class="header-content">
+        <div class="header-content row-lg-2">
             <div class="header-content-inner">
                 <h1 id="homeHeading"></h1>
-                <div>
-                  <br><br><br><br>
-                  <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+                <div class="col-sm-3">
+                    <p></p>
+                </div>
+                <div class="col-sm-6">
+                  <br><br><br><br><br><br><br><br><br><br><br>
+                    
+                    <div id="gameArea">
+                        <p class="event">Welcome to Relic Quest! Choose a character to begin your adventure. Before you begin, click a button below to read the full back-story to each character...</p>
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button onclick="monkTempleChoice()" type="button" class="btn btn-default">Warrior Monk</button>
+                            <button onclick="nunTempleChoice()" type="button" class="btn btn-default">Battle Nun</button>
+                            <button onclick="priestTempleChoice()" type="button" class="btn btn-default">Assassin Priest</button>
+                        </div>
+
+                        <br><br><br>
+
+                        <div class="btn-group" role="group" aria-label="...">
+                            <button onclick="newPage()" type="button" class="btn btn-default">Monk's Story</button>
+                            <button type="button" class="btn btn-default">Nun's Story</button>
+                            <button type="button" class="btn btn-default">Priest's Story</button>
+                        </div>
+
+                    </div>
+                    
+                </div>
+                <div class="col-sm-3">
+                    <p></p>
                 </div>
             </div>
         </div>
     </header>
 
-
+    <!-- Our scripts (rpg.js) -->
+    <script src="js/rpg.js"></script>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
