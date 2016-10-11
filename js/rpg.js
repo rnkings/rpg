@@ -3,7 +3,9 @@
 var player;
 
 function Character() {
-    this.health = 100;
+    var health = 100;
+    this.getHealth = function(){return health}
+}
     this.gold = 25;
 
         this.modifyHealth = function(difference){
