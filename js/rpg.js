@@ -82,7 +82,7 @@ function AssassinPriest() {
 }
 
 // //This "inherits" from our Character class, so WarriorMonk derives from it
-AssassinPriest.prototype = Object.create(AssassinPriest.prototype);
+AssassinPriest.prototype = Object.create(Character.prototype);
 // //We should set the constructor on here to our constructor
 AssassinPriest.prototype.constructor = AssassinPriest;
 
@@ -109,9 +109,9 @@ function chooseCharacter(type) {
             return;
         }
 
-    console.log(player.getHealth());
-    console.log(player.getGold());
-    console.log(player.getType());
+    // console.log(player.getHealth());
+    // console.log(player.getGold());
+    // console.log(player.getType());
 
     game = new Game(player);
 
@@ -228,113 +228,106 @@ function priestBackStory() {
 
 //Warrior Monk Beginning Choice.
 function monkTempleChoice() {
-    setDescription("You, the Battle Nun, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits, Which do you choose?");
-    setButton(getFirstButton(), "Leave quietly out the back.", leaveThruBack);
-    setButton(getSecondButton(), "Leave quickly out the side entrance.", leaveThruSide);
-    setButton(getThirdButton(), "Leave out the main entrance to the city market.", leaveThruMain);
+    setDescription("You, the Battle Nun, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
+    setButton(getFirstButton(), "Back door", leaveThruBack);
+    setButton(getSecondButton(), "Side exit", leaveThruSide);
+    setButton(getThirdButton(), "Main exit", leaveThruMain);
 }
 
 //Battle Nun Beginning Choice.
 function nunTempleChoice() {
-    setDescription("You, the Warrior Monk, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits; the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?");
-    setButton(getFirstButton(), "Leave quietly out the back.", leaveThruBack);
-    setButton(getSecondButton(), "Leave quickly out the side entrance.", leaveThruSide);
-    setButton(getThirdButton(), "Leave out the main entrance to the city market.", leaveThruMain);
+    setDescription("You, the Warrior Monk, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
+    setButton(getFirstButton(), "Back door", leaveThruBack);
+    setButton(getSecondButton(), "Side exit", leaveThruSide);
+    setButton(getThirdButton(), "Main exit", leaveThruMain);
 }
 
 //Assassin Priest Beginning Choice.
 function priestTempleChoice() {
-    setDescription("You, the Battle Nun, and the Warrior Monk meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor across the land to retrieve a lost relic: the Sceptre of the Heavens. You each look at each other, and immediately depart the temple. There are three exits; the back door to the alley, the side door to the main city street, or the main doors to the city market. Which do you choose?");
-    setButton(getFirstButton(), "Leave quietly out the back.", leaveThruBack);
-    setButton(getSecondButton(), "Leave quickly out the side entrance.", leaveThruSide);
-    setButton(getThirdButton(), "Leave out the main entrance to the city market.", leaveThruMain);
+    setDescription("You, the Battle Nun, and the Warrior Monk meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
+    setButton(getFirstButton(), "Back door", leaveThruBack);
+    setButton(getSecondButton(), "Side exit", leaveThruSide);
+    setButton(getThirdButton(), "Main exit", leaveThruMain);
 }
 
 function leaveThruSide() {
-    setDescription("Leaving quickly through the side entrance, you head out into the main street. In your haste, you almost bump into a corrupt bishop on his way into the temple. He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods. Do you pay him off and leave in peace, or attack and stand up for yourself?");
-    setButton(getFirstButton(), "Attack", function () {
-        var character = game.getCharacter();
-        character.affectHealth(-5);
-        character.affectGold(5);
-        attackThieves();
-    });
-    setButton(getThirdButton(), "Make Offering", function () {
-        var character = game.getCharacter();
-        character.affectGold(-5);
-        payThieves();
-    });
+    setDescription("You leave quickly through the side entrance, you head out into the main street.  In your haste, you almost bump into a corrupt bishop on his way into the temple.  He glares at you menacingly, and demands you make a monetary offering, or else risk being damned by the gods.  Do you pay him off and live in peave or attack and stand up for yourself?");
+    setButton(getFirstButton(), "Fight!", fightBishop);
+    setButton(getThirdButton(), "Pay off", payBishop);
 }
 
-function leaveThruBack() {
-    setDescription("Leaving quietly out the back, you head into the alley hoping to leave the city without being seen. Unfortunately, a gang of thieves is hanging out in the alley, waiting to take unsuspecting temple worshipers' gold. Will you give them everything you have and leave without trouble, or attack them and teach them a lesson?");
-    setButton(getFirstButton(), "Attack", function () {
-        var character = game.getCharacter();
-        character.affectHealth(-5);
-        character.affectGold(5);
-        attackThieves();
-    });
-    setButton(getThirdButton(), "Make Offering", function () {
-        var character = game.getCharacter();
-        character.affectGold(-5);
-        payThieves();
-    });
+function fightBishop(){
+    var character = game.getCharacter();
+    character.affectGold(5);
+    character.affectHealth(-5);
+
+    setDescription("You decided to fight that meanie of a bishop. He might not have looked like a fighter but you got slapped around before you managed to knock him out.  You quickly take his purse of gold and scamper off.");
+    setButton(getFirstButton(), "Continue!", continueTowardsGates);
 }
+
+function payBishop(){
+    var character = game.getCharacter();
+    character.affectGold(-5);
+    character.affectHealth(0);
+
+    setDescription("Argh, you don't want to enable this crooked bishop but at the same time you really need to get a head start on your quest and you just don't have time for this.  You pay him and leave.");
+    setButton(getFirstButton(), "Continue!", continueTowardsGates);
+}
+
+
+function leaveThruBack() {
+    setDescription("You leave quickly through the back door, only to find a gang of thieves waiting for you.  This really isn't your day.  Your first steps on your quest and you already have to decide, will you fight them or pay them off?");
+    setButton(getFirstButton(), "Fight!", fightThieves);
+    setButton(getThirdButton(), "Pay off", payThieves);
+}
+
+function fightThieves(){
+    var character = game.getCharacter();
+    character.affectGold(6);
+    character.affectHealth(-6);
+
+    setDescription("You decided to fight the thieves. You might as well toughen up now. The only thing you didn't think about before attacking was that there are three of them and only one of you. You manage to knock them all out by shear luck and take their gold.");
+    setButton(getFirstButton(), "Continue!", continueTowardsGates);
+}
+
+function payThieves(){
+    var character = game.getCharacter();
+    character.affectGold(-5);
+    character.affectHealth(0);
+
+    setDescription("You decide peace is the best policy and pay them.  Besides what does a reglious head need with gold anyways.  If someone was that desperate for money then you don't mind giving it to them.  Let let you pass and you continue on your way.");
+    setButton(getFirstButton(), "Continue", continueTowardsGates);
+}
+
 
 function leaveThruMain() {
     setDescription("Running through the main temple entrance doors, you head straight into the city market, hoping to make a straight shot to the city gates. You accidentally bump shoulders with a city guard, who promptly begins questioning you. Will you bribe him, or decide not to put up with his questioning and attack??");
-    setButton(getFirstButton(), "Attack", function () {
-        var character = game.getCharacter();
-        character.affectHealth(-5);
-        character.affectGold(5);
-        attackThieves();
-    });
-    setButton(getThirdButton(), "Bribe", function () {
-        var character = game.getCharacter();
-        character.affectGold(-5);
-        payThieves();
-    });
+    setButton(getFirstButton(), "Fight!", fightGuards);
+    setButton(getThirdButton(), "Pay off", payGuards);
 }
 
-//IF SIDE DOOR, THEN THESE TWO FUNCTIONS
-function attackBishop() {
-    setDescription("You attack the Bishop, leaving him a bloody mess. Unfortunately he had a dagger on him, and although was able to get a few minor cuts in, ultimately you emerge victorious! You take his gold, and continue on toward the city gates.");
-    setButton(getFirstButton(), "Continue on!", function () {
-        var character = game.getCharacter();
-        character.affectHealth(-5);
-        character.affectGold(5);
-        attackThieves();
-        // 
-        encounterGateGuardsOne();
-    });
-    setButton(getThirdButton(), "Bribe", function () {
-        var character = game.getCharacter();
-        character.affectGold(-5);
-        payThieves();
-    });
+function fightGuards(){
+    var character = game.getCharacter();
+    character.affectGold(7);
+    character.affectHealth(-7);
+
+    setDescription("You decided to fight the guards. They always made fun of the people from the temple whenever they went into town and it was time someone stood up to them. The only thing you didn't think about before attacking was that there are three of them and only one of you. You manage to knock them all out by shear luck and take their gold.");
+    setButton(getFirstButton(), "Continue!", continueTowardsGates);
 }
 
-function payBishop() {
-    setDescription("You give the Bishop 5 gold pieces, who greedily snatches them out of your hand. 'Glad you know your place' he snarls, as he continues on into the temple. Seething, you continue on toward the city gates hoping that this was worth it.");
-    setButton(getFirstButton(), "Continue on!", function (){
-        var character = game.getCharacter();
-        character.affectHealth(-5);
-        character.affectGold(5);
-        attackThieves();
-        // 
-        encounterGateGuardsOne();
-    });
-    setButton(getThirdButton(), "Bribe", function () {
-        var character = game.getCharacter();
-        character.affectGold(-5);
-        payThieves();
-    });
+function payGuards(){
+    var character = game.getCharacter();
+    character.affectGold(-7);
+    character.affectHealth(0);
+
+    setDescription("You decide to pay them. This does not sit well with you since you feel you are adding to their greed, but at the same time you need to make haste to find the holy relic so that your religion can be spread across the land so that tyrants like these guards would learn to have a heart.");
+    setButton(getFirstButton(), "Continue!", continueTowardsGates);
 }
+
 
 function continueTowardsGates() {
     setDescription("The guards look at you and decide to let you go on into the market");
     setButton(getFirstButton(), "Go to the market!", goToMarket);
-    alert(player.health);
-    alert(player.gold);
 }
 
 function goToMarket() {
@@ -383,7 +376,7 @@ function leftDewyMountains() {
 function RightPuckwuppyForest() {
     setDescription("You choose Puckwuppy Forest for no other reason than the fact it sounds safe. And safe it is! As you stop by a river to take a drink of water you also relize this forest is rich in specks of gold!  You can either take the time to gather enough specks to make a coin or take a drink of water and be on your way!");
     setButton(getFirstButton(), "Gather gold specks!", gatherGoldSpecks);
-    setButton(getThirdButton(), "Drink water", goToMarket);
+    setButton(getThirdButton(), "Drink water", drinkWater);
 }
 
 function fightTroll(){
@@ -403,8 +396,6 @@ function throwCoins(){
 
     setDescription("You decided to throw some of your gold coins, now that you were in the wildreness you wouldn't be needing them anyways.  The greedy troll took your bait and ran after the coins, buying you enough time to escape.");
     setButton(getFirstButton(), "Run Away!", runAway);
-
-
 }
 
 function gatherGoldSpecks(){
@@ -618,7 +609,7 @@ function arrivingAtTown() {
     setDescription("Arriving at the town, you encounter many sights and smells. Ahead of you, you see a dancer, a food stall, and a gambler with a cup game.")
     setButton(getFirstButton(), "Play a cup game", playCupGame);
     setButton(getSecondButton(), "Get some food", eatAtFoodStall);
-    setButton(getThirdButton(), "Continue on!", choseDirection);
+    setButton(getThirdButton(), "Continue on!", walkOutTown);
 }
 
 function playCupGame() {
@@ -627,21 +618,109 @@ function playCupGame() {
     character.affectHealth(-5);
 
     setDescription("You guessed wrong.  You're not very good at games are you?  Then again you don't usually play many at the temple.");
-    setButton(getFirstButton(), "Play again!", playCupGame);
-    setButton(getThirdButton(), "Go back to the market entrance", choseDirection);
+    setButton(getThirdButton(), "Continue", walkOutTown);
 
 }
 
-function choseDirection(){
+function eatFood() {
+    var character = game.getCharacter();
+    character.affectGold(-2);
+    character.affectHealth(5);
+
+    setDescription("Yum! That food was really good.");
+    setButton(getThirdButton(), "Continue", walkOutTown);
 
 }
+
+function walkOutTown(){
+    setDescription("You decide that you've gotten distracted again by too many games and smells, it seems you are making up for lost time at the temple.");
+    setButton(getThirdButton(), "Continue", chooseSwampBog);
+}
+
+function chooseSwampBog(){
+    setDescription("You come across the swamp on loneliness or the bog of sadness.  Neither sound great but you are pretty sure that you will have to go through some bad before you can reach the good.  Which way will you choose?");
+    setButton(getFirstButton(), "Bog of Loneliness!", bog);
+    setButton(getThirdButton(), "Swamp of Sadness", swamp);
+}
+
+function swamp(){
+    setDescription("The swamp! Nothing sounds better than getting stuck in stench mud! But nothing else would dare walk through the swamp right?  You should not have to encounter anyone else.");
+    setButton(getFirstButton(), "Continue!", swampMonster);
+}
+
+function bog(){
+    setDescription("The bog!  Excellent choice!  It's full of the dead from past battles!  They can't hurt you now that they are dead right? Right?");
+    setButton(getFirstButton(), "Continue!", bogMonster);
+
+}
+
+function bogMonster(){
+    setDescription("Wrong! You were so wrong.  Out of the bog a monster appears, green and slimy and looking to eat something...alive.  That would be you...do you fight? Or throw gold hoping such a gastily beast is interested in shiny things.");
+    setButton(getFirstButton(), "Fight!", fightMonster);
+    setButton(getThirdButton(), "Throw Gold", throwGoldMonster);
+}
+
+function swampMonster(){
+    setDescription("Wrong! You were so wrong.  Out of the swamp a monster appears, green and slimy and looking to eat something...alive.  That would be you...do you fight? Or throw gold hoping such a gastily beast is interested in shiny things.");
+    setButton(getFirstButton(), "Fight!", fightMonster);
+    setButton(getThirdButton(), "Throw Gold", throwGoldMonster);
+}
+
+function fightMonster(){
+    var character = game.getCharacter();
+    character.affectGold(10);
+    character.affectHealth(-10);
+
+    setDescription("Wow that monster really kicked your butt!  You barely made it out alive. You got 10 gold though, that monster must have liked shiny things, now you wish you would have thrown some gold.");
+    setButton(getFirstButton(), "Continue!", oldTemple);
+}
+
+function throwGoldMonster(){
+    var character = game.getCharacter();
+    character.affectGold(10);
+    character.affectHealth(-10);
+
+    setDescription("Wow that monster really kicked your butt!  You barely made it out alive. You got 10 gold though, that monster must have liked shiny things, now you wish you would have thrown some gold.");
+    setButton(getFirstButton(), "Continue!", oldTemple);
+}
+
+function oldTemple(){
+    setDescription("You come across an old temple, no one is around and many of the pillars are cracked and falling down.  You decide to go  in and see what things you can find.");
+    setButton(getFirstButton(), "Continue!", foundTheRelic);
+
+}
+
+function foundTheRelic(){
+    setDescription("You enter the old temple and search each room.  All you see is a bunch of dust.  You say a prayer for the old temple and as you are about to leave something shiny catches your eye.");
+    setButton(getFirstButton(), "Continue!", somethingShiny);
+}
+
+function somethingShiny(){
+    setDescription("You walk over and dust off the object.  It looks like a septor.  Your heart beats fast.  Is this the septor?  It looks old and has red stones all over it.  This has to be it you think!");
+    setButton(getFirstButton(), "Continue!", backToStartingTemple);
+}
+
+function backToStartingTemple(){
+    setDescription("You make haste and book it back to the main temple and wait for the other religious heads to get word.  Slowly they trickle in to see if you have truely found the holy relic.");
+    setButton(getFirstButton(), "Continue!", itIsTheRelic);
+}
+
+function itIsTheRelic(){
+    setDescription("After inspection they all agree, you have found the long lost holy relic! Your religion will be celebrated throughout the land.  Tears have been brought to your eyes");
+    setButton(getFirstButton(), "Continue!", youWon);
+}
+
+function youWon(){
+    setDescription("You won! The end!");
+    setButton(getFirstButton(), "Play again!", start);
+}
+
 
 //IF BACK DOOR, THEN THESE TWO FUNCTIONS
 function attackThieves() {
     setDescription("You decide not to give in to the thieves, and brandish your weapon. They surround you, and one by one begin to attack. Your superior training and fighting abilities kick in, and you systematically defeat every last one of them. You are not unscathed, however. You take their gold, and leave them groaning and heaped up on the ground. You continue heading on toward the city gates.");
     setButton(getFirstButton(), "Continue on!", continueTowardsGates);
 
-    alert("You gained five gold!! But lost five health!");
     var character = game.getCharacter();
 
     character.affectGold(5);
