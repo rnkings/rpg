@@ -1,4 +1,3 @@
-"use strict";
 
 "use strict";
 
@@ -27,13 +26,10 @@ Character.prototype.affectHealth = function (healthChange) {
     console.log(this.getHealth());
     this.health+= healthChange;
     if (this.health <= 0) {
-        //Character is dead
-        //TODO handle death
         this.health = 0;
     }
 }
 
-//This is attaching methods to our class
 Character.prototype.getHealth = function () {
     return this.health;
 }
@@ -51,39 +47,28 @@ Character.prototype.isDead = function () {
 }
 
 function BattleNun() {
-    //We call the Character constructor
-    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
     Character.call(this, 'battle nun');
 }
 
-//This "inherits" from our Character class, so BattleNun derives from it
 BattleNun.prototype = Object.create(Character.prototype);
 
-//We should set the constructor on here to our constructor
 BattleNun.prototype.constructor = BattleNun;
 
 
 function WarriorMonk() {
-    //We call the Character constructor
-    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
     Character.call(this, 'warrior monk');
 }
 
-//This "inherits" from our Character class, so WarriorMonk derives from it
 WarriorMonk.prototype = Object.create(Character.prototype);
 
-//We should set the constructor on here to our constructor
 WarriorMonk.prototype.constructor = WarriorMonk;
 
 function AssassinPriest() {
-    //We call the Character constructor
-    //the first argument is the current scope (this), the second and onward are all the arguments to the parent
     Character.call(this, 'assassin priest');
 }
 
-// //This "inherits" from our Character class, so WarriorMonk derives from it
 AssassinPriest.prototype = Object.create(Character.prototype);
-// //We should set the constructor on here to our constructor
+
 AssassinPriest.prototype.constructor = AssassinPriest;
 
 function Game(character) {
@@ -108,10 +93,6 @@ function chooseCharacter(type) {
         else {
             return;
         }
-
-    // console.log(player.getHealth());
-    // console.log(player.getGold());
-    // console.log(player.getType());
 
     game = new Game(player);
 
@@ -173,7 +154,6 @@ function displayHealthAndGold() {
             start();
             healthElement.innerHTML = '';
             goldElement.innerHTML = '';
-            //TODO handle death of character - stop game, maybe allow restart?
         } else {
             healthElement.innerHTML = character.getHealth();
             goldElement.innerHTML = character.getGold();
@@ -181,8 +161,6 @@ function displayHealthAndGold() {
     }
 }
 
-// Global game var
-// This stores our current game
 var game;
 
 
@@ -193,7 +171,6 @@ function start() {
     setButton(getThirdButton(), "Priest's Story", priestBackStory);
 }
 
-//BACK STORY FUNCTIONS, CALL THESE IN THE HTML
 function monkBackStory() {
     setDescription("The monks of Tanai worship the earth and how it keeps it's people grounded and humble.");
     setButton(getFirstButton(), "Start Warrior Monk", function () {
@@ -203,7 +180,6 @@ function monkBackStory() {
 
     setButton(getThirdButton(), "Go Back", start);
 
-//SAME TEMPLATE AS FUNCTIONS BELOW, JUST MAKE THE BUTTON CORRESPOND WITH THE APPROPRIATE TEMPLE CHOICE FUNCTION, OR TELL THEM TO JUST REFRESH PAGE IN THE TEXT
 }
 
 function nunBackStory() {
@@ -226,7 +202,6 @@ function priestBackStory() {
     setButton(getThirdButton(), "Go Back", start);
 }
 
-//Warrior Monk Beginning Choice.
 function monkTempleChoice() {
     setDescription("You, the Battle Nun, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective cases. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
     setButton(getFirstButton(), "Back door", leaveThruBack);
@@ -234,7 +209,7 @@ function monkTempleChoice() {
     setButton(getThirdButton(), "Main exit", leaveThruMain);
 }
 
-//Battle Nun Beginning Choice.
+
 function nunTempleChoice() {
     setDescription("You, the Warrior Monk, and the Assassin Priest meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
     setButton(getFirstButton(), "Back door", leaveThruBack);
@@ -242,7 +217,6 @@ function nunTempleChoice() {
     setButton(getThirdButton(), "Main exit", leaveThruMain);
 }
 
-//Assassin Priest Beginning Choice.
 function priestTempleChoice() {
     setDescription("You, the Battle Nun, and the Warrior Monk meet in the Ancient Temple of Tanai to plead your respective idealogies. Upon entering the main shrine, you all experience a brilliant flash of light, and receive a divine intervention. You are all told that, in order to have your idealogy be the ruling one, to go on a holy endeavor and retrieve a lost relic.");
     setButton(getFirstButton(), "Back door", leaveThruBack);
@@ -273,7 +247,6 @@ function payBishop(){
     setDescription("Argh, you don't want to enable this crooked bishop but at the same time you really need to get a head start on your quest and you just don't have time for this.  You pay him and leave.");
     setButton(getFirstButton(), "Continue!", continueTowardsGates);
 }
-
 
 function leaveThruBack() {
     setDescription("You leave quickly through the back door, only to find a gang of thieves waiting for you.  This really isn't your day.  Your first steps on your quest and you already have to decide, will you fight them or pay them off?");
@@ -716,7 +689,6 @@ function youWon(){
 }
 
 
-//IF BACK DOOR, THEN THESE TWO FUNCTIONS
 function attackThieves() {
     setDescription("You decide not to give in to the thieves, and brandish your weapon. They surround you, and one by one begin to attack. Your superior training and fighting abilities kick in, and you systematically defeat every last one of them. You are not unscathed, however. You take their gold, and leave them groaning and heaped up on the ground. You continue heading on toward the city gates.");
     setButton(getFirstButton(), "Continue on!", continueTowardsGates);
